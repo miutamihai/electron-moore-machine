@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Node } from './node'
 import { useContext } from '../context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheck} from '@fortawesome/free-solid-svg-icons'
 import { RenderIf } from '../renderIf'
+import {get} from 'lodash'
 
 const className = 'placeholder:italic placeholder:text-slate-50 placeholder:text-center placeholder:font-mono placeholder:text-xs bg-gray-800 w-full py-2 pl-9 pr-3 shadow-sm border-b-2 border-slate-50 focus:outline-none focus:border-sky-500 text-slate-50 text-md font-mono disabled:opacity-60'
 
@@ -15,18 +16,28 @@ const makeIconWrapperClassName = disabled => {
 
 export const Relation = ({parent}) => {
     const [value, setValue] = useState('')
+    const [committedValue, setCommittedValue] = useState('')
     const {state, setState} = useContext()
     const [disabled, setDisabled] = useState(false)
+    const [nodeValue, setNodeValue] = useState('')
+
+    useEffect(() => {
+        if (nodeValue && committedValue ) {
+            const parentValue = get(state, parent, [])
+            setState({
+                ...state,
+                [parent]: [...parentValue, [committedValue, nodeValue]]
+            })
+        }
+    }, [nodeValue, committedValue, setState])
 
     const onChange = value => {
-        setState({
-            ...state,
-            [parent]: value
-        })
+        setNodeValue(value)
     }
 
-    const onTransitionDone = event => {
+    const onTransitionDone = () => {
         setDisabled(true)
+        setCommittedValue(value)
     }
 
     return <div className={'flex space-x-1'}>
