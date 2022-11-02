@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import {Pair} from './pair'
+import { Pair } from './pair'
+import { New } from './new'
 
 export const State = () => {
-    const [state, setState] = useState([])
+    const [ state, setState ] = useState([])
 
-    return <div className={'flex flex-col space-y-2 w-1/2'}>
-        {state.map((value, index) => <Pair key={index} />)}
-        <button onClick={() => setState(prev => [...prev, ''])} className={'bg-slate-50 text-gray-800 rounded-full text-xl w-full py-2'}>+</button>
+    return <div className={ 'flex flex-col space-y-2 w-3/4' }>
+        { state.map((value, index) => <Pair key={ index }/>) }
+        <New onClick={ () => setState(prev => [ ...prev, '' ]) }/>
     </div>
 }
