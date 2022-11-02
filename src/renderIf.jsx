@@ -1,0 +1,1 @@
+export const RenderIf = ({children, condition}) => condition ? children : ''
