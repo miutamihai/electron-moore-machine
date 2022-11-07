@@ -1,5 +1,6 @@
 import GraphDisplay from 'react-graph-vis'
 import { useBuildGraph } from './useBuildGraph'
+import { useSetNetwork } from './useSetNetwork'
 
 const fontFamily = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
 
@@ -29,11 +30,19 @@ const edgeScaling = {
     }
 }
 
+const nodeColor = {
+    background: '#f8fafc',
+    highlight: {
+        background: '#2563eb'
+    }
+}
+
 export const Graph = () => {
     const graph = useBuildGraph()
+    const setNetwork = useSetNetwork()
 
     const styledGraph = {
-        nodes: graph.nodes.map(node => ({...node, color: '#f8fafc', shape: 'circle', font: nodeFont})),
+        nodes: graph.nodes.map(node => ({...node, color: nodeColor, shape: 'circle', font: nodeFont})),
         edges: graph.edges.map(edge => ({...edge, width: 8, font: edgeFont, ...edgeScaling})),
     }
 
@@ -49,7 +58,7 @@ export const Graph = () => {
         height: `${ screen.height - 120 }px`,
         physics: {
             enabled: false,
-            solver: "repulsion",
+            solver: 'repulsion',
             repulsion: {
                 nodeDistance: 400
             }
@@ -59,8 +68,6 @@ export const Graph = () => {
     return <GraphDisplay
         graph={ styledGraph }
         options={ options }
-        getNetwork={network => {
-            network.stabilize()
-        }}
+        getNetwork={ setNetwork }
     />
 }
