@@ -6,8 +6,9 @@ export const useContext = () => useReactContext(Context)
 
 export const useDefaultContext = () => {
     const [state, setState] = useState({})
+    const [input, setInput] = useState('')
 
     return {
-        state, setState
+        state, setState, input, setInput
     }
 }

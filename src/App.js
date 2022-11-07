@@ -1,5 +1,6 @@
 import {Text} from './text'
 import { State } from './state'
+import {Input} from './input'
 import {Context, useDefaultContext} from './context'
 
 export const App = () => <Context.Provider value={useDefaultContext()}>
@@ -7,9 +8,7 @@ export const App = () => <Context.Provider value={useDefaultContext()}>
         className={ 'flex h-screen w-screen flex-col items-center justify-center bg-gray-800 space-y-5 px-5' }>
         <Text />
         <State />
-        <input
-            className="placeholder:italic placeholder:text-slate-50 placeholder:text-center placeholder:font-mono placeholder:text-md bg-gray-800 w-full border border-slate-50 rounded-full py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm text-slate-50 font-mono"
-            placeholder="Introduceti datele de intrare" type="text" name="input"/>
+        <Input />
         <input type="file" className="block text-sm text-slate-50 font-mono
       file:mr-4 file:py-2 file:px-4
       file:rounded-full file:border-0
