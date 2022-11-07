@@ -1,6 +1,6 @@
 import { useContext } from '../context'
 
-const fields = ['filePicker', 'input']
+const fields = ['filePicker', 'input', 'state']
 
 const fieldsHaveErrors = ({errors}) => fields.some(field => !!errors[field])
 

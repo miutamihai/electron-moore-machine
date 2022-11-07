@@ -8,7 +8,7 @@ export const useDefaultContext = () => {
     const [state, setState] = useState({})
     const [input, setInput] = useState('')
     const [file, setFile] = useState({name: '', data: ''})
-    const [errors, setErrors] = useState({filePicker: null, input: null})
+    const [errors, setErrors] = useState({filePicker: null, input: null, state: null})
 
     return {
         state, setState, input, setInput, file, setFile, errors, setErrors
