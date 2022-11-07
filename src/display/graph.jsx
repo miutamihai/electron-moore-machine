@@ -1,43 +1,66 @@
 import GraphDisplay from 'react-graph-vis'
+import { useBuildGraph } from './useBuildGraph'
+
+const fontFamily = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+
+const nodeFont = {
+    size: 30,
+    face: fontFamily,
+    color: '#1F2937',
+}
+
+const edgeFont = {
+    size: 30,
+    face: fontFamily,
+    color: '#1f2937',
+}
+
+const edgeScaling = {
+    scaling: {
+        min: 1,
+        max: 15,
+        label: {
+            enabled: true,
+            min: 14,
+            max: 30,
+            maxVisible: 30,
+            drawThreshold: 5
+        },
+    }
+}
 
 export const Graph = () => {
-    const graph = {
-        nodes: [
-            { id: 1, label: "Node 1", title: "node 1 tootip text" },
-            { id: 2, label: "Node 2", title: "node 2 tootip text" },
-            { id: 3, label: "Node 3", title: "node 3 tootip text" },
-            { id: 4, label: "Node 4", title: "node 4 tootip text" },
-            { id: 5, label: "Node 5", title: "node 5 tootip text" }
-        ].map(node => ({...node, color: '#ffffff', shape: 'circle'})),
-        edges: [
-            { from: 1, to: 2 },
-            { from: 1, to: 3 },
-            { from: 2, to: 4 },
-            { from: 2, to: 5 }
-        ]
-    };
+    const graph = useBuildGraph()
+
+    const styledGraph = {
+        nodes: graph.nodes.map(node => ({...node, color: '#f8fafc', shape: 'circle', font: nodeFont})),
+        edges: graph.edges.map(edge => ({...edge, width: 8, font: edgeFont, ...edgeScaling})),
+    }
 
     const options = {
         layout: {
-            hierarchical: false
+            hierarchical: {
+                nodeSpacing: 800
+            }
         },
         edges: {
-            color: "#ffffff"
+            color: '#f8fafc'
         },
-        height: `${screen.height - 120}px`
-    };
-
-    const events = {
-        select: function(event) {
-            var { nodes, edges } = event;
+        height: `${ screen.height - 120 }px`,
+        physics: {
+            enabled: false,
+            solver: "repulsion",
+            repulsion: {
+                nodeDistance: 400
+            }
         }
-    };
-    return <GraphDisplay
-            graph={graph}
-            options={options}
-            events={events}
-            getNetwork={network => {
-                //  if you want access to vis.js network api you can set the state in a parent component using this property
-            }}
-        />
     }
+
+    return <GraphDisplay
+        graph={ styledGraph }
+        options={ options }
+        getNetwork={network => {
+            network.stabilize()
+        }}
+    />
+}
