@@ -1,4 +1,5 @@
 import { createContext, useContext as useReactContext, useState } from 'react'
+import { stages } from './stages'
 
 export const Context = createContext({})
 
@@ -9,8 +10,18 @@ export const useDefaultContext = () => {
     const [input, setInput] = useState('')
     const [file, setFile] = useState({name: '', data: ''})
     const [errors, setErrors] = useState({filePicker: null, input: null, state: null})
+    const [stage, setStage] = useState(stages.setup)
 
     return {
-        state, setState, input, setInput, file, setFile, errors, setErrors
+        state,
+        setState,
+        input,
+        setInput,
+        file,
+        setFile,
+        errors,
+        setErrors,
+        stage,
+        setStage,
     }
 }

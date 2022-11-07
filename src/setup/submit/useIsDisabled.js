@@ -1,4 +1,4 @@
-import { useContext } from '../context'
+import { useContext } from '../../context'
 
 const fields = ['filePicker', 'input', 'state']
 

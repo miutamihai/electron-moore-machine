@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import {useContext} from '../context'
+import {useContext} from '../../context'
 import { Pair } from './pair'
 import { Change } from './change'
-import { makeRandomString } from '../makeRandomString'
-import { RenderIf } from '../renderIf'
+import { makeRandomString } from './makeRandomString'
+import { RenderIf } from '../../renderIf'
 
 const scrollBarClasses = 'scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full hover:scrollbar-thumb-slate-50'
 

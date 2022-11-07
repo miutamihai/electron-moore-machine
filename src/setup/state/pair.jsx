@@ -2,9 +2,9 @@ import { Node } from './node'
 import { Relation } from './relation'
 import { Change } from './change'
 import { useState } from 'react'
-import { makeRandomString } from '../makeRandomString'
-import { RenderIf } from '../renderIf'
-import { useContext } from '../context'
+import { makeRandomString } from './makeRandomString'
+import { RenderIf } from '../../renderIf'
+import { useContext } from '../../context'
 
 export const Pair = () => {
     const [ transitions, setTransitions ] = useState([])

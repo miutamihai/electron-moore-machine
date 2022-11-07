@@ -1,6 +1,6 @@
 import { useOnChange } from './useOnChange'
-import { useContext } from '../context'
-import { RenderIf } from '../renderIf'
+import { useContext } from '../../context'
+import { RenderIf } from '../../renderIf'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useClearFile } from './useClearFile'

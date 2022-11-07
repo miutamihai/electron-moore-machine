@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Node } from './node'
-import { useContext } from '../context'
+import { useContext } from '../../context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheck} from '@fortawesome/free-solid-svg-icons'
-import { RenderIf } from '../renderIf'
+import { RenderIf } from '../../renderIf'
 import {get} from 'lodash'
 
 const className = 'placeholder:italic placeholder:text-slate-50 placeholder:text-center placeholder:font-mono placeholder:text-xs bg-gray-800 w-full py-2 pl-9 pr-3 shadow-sm border-b-2 border-slate-50 focus:outline-none focus:border-sky-500 text-slate-50 text-md font-mono disabled:opacity-60'
