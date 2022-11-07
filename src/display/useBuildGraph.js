@@ -19,6 +19,7 @@ export const useBuildGraph = () => {
                 }
 
                 return value.map(([ label, target ]) => ({
+                    id: label,
                     from: key.split('[')[0],
                     to: target,
                     label

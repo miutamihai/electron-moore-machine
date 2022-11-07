@@ -8,6 +8,7 @@ export const useDefaultDisplayContext = () => {
     const [network, setNetwork] = useState({})
     const [isAnimating, setIsAnimating] = useState(false)
     const [log, setLog] = useState([])
+    const [current, setCurrent] = useState('')
 
     return {
         network,
@@ -15,6 +16,8 @@ export const useDefaultDisplayContext = () => {
         isAnimating,
         setIsAnimating,
         log,
-        setLog
+        setLog,
+        current,
+        setCurrent,
     }
 }

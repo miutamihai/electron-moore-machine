@@ -7,12 +7,13 @@ py-1 font-semibold disabled:opacity-60 absolute top-4 z-10
 `
 
 export const Animate = () => {
-    const {isAnimating, setIsAnimating} = useDisplayContext()
+    const {isAnimating, setIsAnimating, setCurrent} = useDisplayContext()
     const clearContext = useClearContext()
 
     const onClick = () => {
         clearContext()
         setIsAnimating(true)
+        setCurrent(0)
     }
 
     return <button className={className} onClick={onClick} disabled={isAnimating}>

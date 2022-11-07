@@ -3,10 +3,16 @@ import { useCallback } from 'react'
 import { stages } from '../../stages'
 
 export const useGoToDisplay = () => {
-    const {setStage, state} = useContext()
+    const {setStage, state, input, file: {data}, setDataSet} = useContext()
 
     return useCallback(() => {
-        console.log('going to display with state', state)
+        let dataSet
+        if (input) {
+            dataSet = input.split(',')
+        } else {
+            dataSet = data.split(',')
+        }
+        setDataSet(dataSet)
         setStage(stages.display)
-    }, [setStage, state])
+    }, [setStage, state, input, data, setDataSet])
 }

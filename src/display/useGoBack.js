@@ -4,8 +4,8 @@ import { stages } from '../stages'
 import { useDisplayContext } from './displayContext'
 
 export const useGoBack = () => {
-    const {setStage, setInput, setFile, setErrors, setState} = useContext()
-    const {setNetwork, setIsAnimating, setLog} = useDisplayContext()
+    const {setStage, setInput, setFile, setErrors, setState, setDataSet} = useContext()
+    const {setNetwork, setIsAnimating, setLog, setCurrent} = useDisplayContext()
 
     return useCallback(() => {
         setStage(stages.setup)
@@ -16,5 +16,7 @@ export const useGoBack = () => {
         setNetwork({})
         setIsAnimating(false)
         setLog([])
-    }, [setStage, setInput, setFile, setErrors, setState, setNetwork, setIsAnimating, setLog])
+        setDataSet([])
+        setCurrent('')
+    }, [ setStage, setInput, setFile, setErrors, setState, setNetwork, setIsAnimating, setLog, setDataSet, setCurrent ])
 }

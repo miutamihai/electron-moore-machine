@@ -11,6 +11,7 @@ export const useDefaultContext = () => {
     const [file, setFile] = useState({name: '', data: ''})
     const [errors, setErrors] = useState({filePicker: null, input: null, state: null})
     const [stage, setStage] = useState(stages.setup)
+    const [dataSet, setDataSet] = useState([])
 
     return {
         state,
@@ -23,5 +24,6 @@ export const useDefaultContext = () => {
         setErrors,
         stage,
         setStage,
+        dataSet, setDataSet
     }
 }

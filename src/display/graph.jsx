@@ -14,6 +14,9 @@ const edgeFont = {
     size: 30,
     face: fontFamily,
     color: '#1f2937',
+    bold: {
+        color: '#2563eb'
+    }
 }
 
 const edgeScaling = {
@@ -30,11 +33,16 @@ const edgeScaling = {
     }
 }
 
-const nodeColor = {
+const color = {
     background: '#f8fafc',
     highlight: {
         background: '#2563eb'
     }
+}
+
+const edgeColor = {
+    color: '#f8fafc',
+    highlight: '#2563eb'
 }
 
 export const Graph = () => {
@@ -42,8 +50,8 @@ export const Graph = () => {
     const setNetwork = useSetNetwork()
 
     const styledGraph = {
-        nodes: graph.nodes.map(node => ({...node, color: nodeColor, shape: 'circle', font: nodeFont})),
-        edges: graph.edges.map(edge => ({...edge, width: 8, font: edgeFont, ...edgeScaling})),
+        nodes: graph.nodes.map(node => ({...node, color, shape: 'circle', font: nodeFont})),
+        edges: graph.edges.map(edge => ({...edge, color: edgeColor,  width: 8, font: edgeFont, ...edgeScaling})),
     }
 
     const options = {
@@ -53,7 +61,7 @@ export const Graph = () => {
             }
         },
         edges: {
-            color: '#f8fafc'
+            color: edgeColor,
         },
         height: `${ screen.height - 120 }px`,
         physics: {
