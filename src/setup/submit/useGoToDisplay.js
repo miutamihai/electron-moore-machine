@@ -10,7 +10,7 @@ export const useGoToDisplay = () => {
         if (input) {
             dataSet = input.split(',')
         } else {
-            dataSet = data.split(',')
+            dataSet = data.trim().replaceAll(' ', '').split(',')
         }
         setDataSet(dataSet)
         setStage(stages.display)
