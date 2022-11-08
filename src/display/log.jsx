@@ -1,12 +1,10 @@
 import { useDisplayContext } from './displayContext'
 import { RenderIf } from '../renderIf'
-import { useContext } from '../context'
 
 const scrollBarClasses = 'scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full hover:scrollbar-thumb-slate-50'
 
 export const Log = () => {
-    const {log, current} = useDisplayContext()
-    const {state} = useContext()
+    const {log} = useDisplayContext()
 
     return <RenderIf condition={!!log.length}>
         <div className={`max-w-sm max-h-60 rounded overflow-auto shadow-lg absolute top-4 right-4 z-10 ${scrollBarClasses}`}>
