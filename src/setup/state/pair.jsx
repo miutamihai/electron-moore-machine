@@ -21,7 +21,7 @@ export const Pair = () => {
     }
 
     return <div className={ 'flex space-x-2' }>
-        <Node onChange={onChange}/>
+        <Node onChange={onChange} regex={/([A-Z]+)\[([a-z]+)\]+/g} validationMessage={'Nodul nu este de forma A[a]'}/>
         <div className={ 'flex space-y-2 flex-col' }>
             { transitions.map(transition => <Relation key={ transition } parent={ localValue }/>) }
         </div>
