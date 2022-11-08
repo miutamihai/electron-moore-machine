@@ -53,10 +53,6 @@ export const useValidateState = () => {
             setErrors(prev => ({...prev, state: emptyMessage}))
         } else if (notAllCommitted) {
             setErrors(prev => ({...prev, state: notCommittedMessage}))
-        } else if (duplicateTransitionsExist(state)) {
-            setErrors(prev => ({...prev, state: duplicateTransitionsMessage}))
-        } else if (targetNodesMissing(state)) {
-            setErrors(prev => ({...prev, state: targetNodesMissingMessage}))
         } else {
             onSuccess()
         }
