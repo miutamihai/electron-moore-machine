@@ -21,6 +21,13 @@ export const AnimationBehaviour = () => {
                         if (!currentState[1]) {
                             break
                         }
+
+                        if (!currentState[1]
+                            .find(([value]) => value.includes(dataEntry))) {
+                            setLog(prev => [...prev, {message: `Nu exista tranzitie pentru valoarea ${dataEntry}. Se ignora.`, type: 'warning'}])
+                            continue
+                        }
+
                         const [transition, targetState] = currentState[1]
                             .find(([value]) => value.includes(dataEntry))
                         setLog(prev => [...prev, {message: `Se aplica tranzitia: ${transition}`, type: 'log'}])
@@ -38,6 +45,7 @@ export const AnimationBehaviour = () => {
                 }
 
                 setLog(prev => [...prev, {message: 'Program incheiat', type: 'output'}])
+                network.setSelection({nodes: []}, {unselectAll: true})
                 setIsAnimating(false)
             }
         }

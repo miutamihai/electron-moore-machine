@@ -16,7 +16,9 @@ export const Log = () => {
                         if (entry.type === 'log') {
                            className = `${className} text-slate-50`
                         } else if (entry.type === 'error') {
-                            className =  `${className} text-rose-500`
+                            className = `${ className } text-rose-500`
+                        } else if (entry.type === 'warning') {
+                            className = `${className} text-yellow-500`
                         } else {
                             className = `${className} text-green-500`
                         }
